@@ -1,0 +1,6 @@
+.git/objects
+.bundle
+db/*.sqlite3
+vendor/bundle
+tmp
+log

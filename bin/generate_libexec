@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'fileutils'
+
+def shell_script(command_line)
+<<EOF
+#!/bin/sh
+cd /srv/app
+#{command_line}
+EOF
+end
+
+FileUtils.mkdir_p "libexec"
+procfile = YAML.load_file "Procfile"
+procfile.each do |process_type, command_line|
+  script_name = "libexec/#{process_type}"
+  IO.write script_name, shell_script(command_line)
+  FileUtils.chmod 0755, script_name
+end
