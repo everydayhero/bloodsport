@@ -9,8 +9,6 @@ ENV HOME /srv/app
 WORKDIR /srv/app/
 
 ADD Gemfile* /srv/app/
-RUN mkdir /srv/app/gemspecs
-ADD components/*/*.gemspec /srv/app/gemspecs/
 RUN bundle install
 
 ADD . /srv/app/
