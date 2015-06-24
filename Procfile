@@ -1,1 +1,1 @@
-web: unicorn -p ${PORT}
+web: bin/unicorn -p ${PORT} -c ./unicorn
